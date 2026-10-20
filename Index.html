@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080817">
+<title>Life OS — Your Personal Universe</title>
+<style>
+:root {
+  --bg:#080817; --panel:#111126; --panel2:#171733;
+  --text:#f4f2ff; --muted:#aaa8c8; --cyan:#63e8ff;
+  --purple:#a78bfa; --pink:#ff8fce; --green:#72f1b8;
+  --border:rgba(180,170,255,.17);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:
+  radial-gradient(ellipse at 10% 0%,#272052 0,transparent 38%),
+  radial-gradient(ellipse at 100% 30%,#132d49 0,transparent 35%),var(--bg);
+  color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;
+  min-height:100vh;
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{padding:27px 18px 15px;max-width:1150px;margin:auto}
+.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(30px,6vw,49px);margin:9px 0 6px;letter-spacing:-1.5px}
+h1 span{color:var(--cyan)}
+.subtitle{color:var(--muted);margin:0;line-height:1.6}
+nav{display:flex;gap:8px;overflow:auto;padding:12px 18px 18px;max-width:1150px;margin:auto}
+nav a{white-space:nowrap;text-decoration:none;color:var(--muted);background:#121226;border:1px solid var(--border);padding:10px 13px;border-radius:12px;font-size:13px}
+nav a:hover{color:var(--cyan);border-color:var(--cyan)}
+main{max-width:1150px;margin:auto;padding:0 18px 50px}
+section{scroll-margin-top:20px;margin:0 0 23px}
+.section-title{font-size:21px;margin:0 0 13px}
+.section-desc{font-size:13px;color:var(--muted);margin:-5px 0 15px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.card{background:linear-gradient(145deg,rgba(24,24,52,.96),rgba(14,14,32,.96));border:1px solid var(--border);border-radius:19px;padding:18px;min-width:0}
+.span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+.card h3{margin:0 0 8px;font-size:16px}
+.muted{color:var(--muted);font-size:13px;line-height:1.6}
+.big{font-size:30px;font-weight:800;margin:8px 0}
+.accent{color:var(--cyan)}.purple{color:var(--purple)}.pink{color:var(--pink)}.green{color:var(--green)}
+.progress{height:7px;background:#292744;border-radius:20px;overflow:hidden;margin:12px 0}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:20px;transition:width .25s}
+.btn{background:linear-gradient(110deg,#6b5bdb,#347fbb);color:white;border:0;border-radius:11px;padding:10px 13px;font-weight:650}
+.btn.secondary{background:#242440;border:1px solid var(--border)}
+.btn.small{padding:7px 10px;font-size:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+input,select{width:100%;background:#0b0b1b;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:11px;outline:none}
+input:focus,select:focus{border-color:var(--cyan)}
+label{display:block;font-size:12px;color:var(--muted);margin:12px 0 6px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.list{display:grid;gap:9px}
+.item{display:flex;gap:10px;align-items:flex-start;padding:11px;border:1px solid var(--border);border-radius:12px;background:#0c0c1e}
+.item input[type=checkbox]{width:18px;height:18px;accent-color:#8f83ff;margin-top:2px;flex-shrink:0}
+.item .item-text{flex:1;font-size:13px;line-height:1.5}
+.item.done .item-text{text-decoration:line-through;color:#77758f}
+.subject{border:1px solid var(--border);border-radius:13px;padding:13px;background:#0c0c1d;margin-bottom:10px}
+.subject-title{font-weight:750;display:flex;justify-content:space-between;gap:8px}
+.topic-list{margin-top:12px;display:grid;gap:8px}
+.topic{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#d9d6ee;line-height:1.5}
+.topic input{width:17px;flex-shrink:0;accent-color:var(--cyan);margin-top:2px}
+.topic.done span{text-decoration:line-through;color:#77758f}
+.quote{font-size:18px;line-height:1.7;font-weight:600}
+.tag{display:inline-block;padding:5px 8px;border:1px solid var(--border);border-radius:9px;font-size:11px;color:var(--cyan);margin:0 5px 6px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:#0c0c1e;padding:12px;border-radius:12px;border:1px solid var(--border)}
+.stat strong{display:block;font-size:22px;margin-bottom:4px}
+.stat span{font-size:11px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}
+hr{border:0;border-top:1px solid var(--border);margin:17px 0}
+@media(max-width:760px){
+ .span-3,.span-4,.span-5,.span-6,.span-7,.span-8{grid-column:span 12}
+ header{padding-top:22px}.card{padding:15px}
+ .stat strong{font-size:19px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">YOUR PERSONAL UNIVERSE · VERSION 1.0</div>
+  <h1>Life <span>OS.</span></h1>
+  <p class="subtitle">Build your mind. Master your studies. Become your next version.</p>
+</header>
+
+<nav>
+  <a href="#dashboard">Dashboard</a>
+  <a href="#study">Study OS</a>
+  <a href="#routine">Daily routine</a>
+  <a href="#mentalist">Mentalist Lab</a>
+  <a href="#savings">Savings</a>
+  <a href="#settings">Settings</a>
+</nav>
+
+<main>
+<section id="dashboard">
+  <h2 class="section-title">Your universe</h2>
+  <p class="section-desc" id="today"></p>
+  <div class="grid">
+    <div class="card span-3">
+      <div class="muted">Syllabus completed</div>
+      <div class="big accent" id="syllabusStat">0%</div>
+      <div class="progress"><div id="syllabusBar"></div></div>
+      <div class="muted" id="topicCount">0 topics completed</div>
+    </div>
+    <div class="card span-3">
+      <div class="muted">Today's routine</div>
+      <div class="big purple" id="routineStat">0%</div>
+      <div class="progress"><div id="routineBar"></div></div>
+      <div class="muted" id="routineCount">0 tasks completed</div>
+    </div>
+    <div class="card span-3">
+      <div class="muted">Money saved</div>
+      <div class="big green" id="savedStat">₹0</div>
+      <div class="muted">Your future starts with small steps.</div>
+    </div>
+    <div class="card span-3">
+      <div class="muted">Days until target</div>
+      <div class="big pink" id="countdownStat">—</div>
+      <div class="muted" id="countdownLabel">Set your target date in Settings.</div>
+    </div>
+    <div class="card span-7">
+      <h3>✦ Today's mission</h3>
+      <p class="quote" id="mission">You don't need a perfect day. You need one honest step forward.</p>
+      <div class="actions">
+        <button class="btn" onclick="goTo('study')">Study now →</button>
+        <button class="btn secondary" onclick="goTo('mentalist')">Train your mind →</button>
+      </div>
+    </div>
+    <div class="card span-5">
+      <h3>📊 Personal progress</h3>
+      <div class="stat-grid">
+        <div class="stat"><strong id="doneTopics">0</strong><span>Topics done</span></div>
+        <div class="stat"><strong id="doneRoutine">0</strong><span>Tasks done</span></div>
+        <div class="stat"><strong id="mentalCount">0</strong><span>Reflections</span></div>
+      </div>
+      <p class="muted">Progress is built by showing up consistently, not by being perfect.</p>
+    </div>
+  </div>
+</section>
+
+<section id="study">
+  <h2 class="section-title">📚 Study OS</h2>
+  <p class="section-desc">Tick topics as you complete them. This is an editable starter checklist, not the official complete CBSE syllabus. Check your current school syllabus and board updates.</p>
+  <div class="grid">
+    <div class="card span-6">
+      <h3 class="accent">Physics</h3>
+      <div id="physicsTopics" class="topic-list"></div>
+    </div>
+    <div class="card span-6">
+      <h3 class="pink">Chemistry</h3>
+      <div id="chemistryTopics" class="topic-list"></div>
+    </div>
+    <div class="card span-6">
+      <h3 class="purple">Mathematics</h3>
+      <div id="mathTopics" class="topic-list"></div>
+    </div>
+    <div class="card span-6">
+      <h3 class="green">English</h3>
+      <div id="englishTopics" class="topic-list"></div>
+    </div>
+  </div>
+</section>
+
+<section id="routine">
+  <h2 class="section-title">⚡ Daily routine</h2>
+  <p class="section-desc">Tick each task when it is done. The checklist resets for a new calendar day.</p>
+  <div class="grid">
+    <div class="card span-7">
+      <div class="row"><h3>Today's checklist</h3><span class="tag" id="routineBadge">0 done</span></div>
+      <div id="routineList" class="list"></div>
+      <hr>
+      <label for="newTask">Add your own task</label>
+      <input id="newTask" placeholder="e.g. Revise electrostatics">
+      <div class="actions"><button class="btn" onclick="addRoutine()">+ Add task</button></div>
+    </div>
+    <div class="card span-5">
+      <h3>Focus session</h3>
+      <p class="muted">Choose a duration and work without distractions.</p>
+      <label for="focusMinutes">Focus time (minutes)</label>
+      <select id="focusMinutes">
+        <option value="15">15 minutes</option>
+        <option value="25" selected>25 minutes</option>
+        <option value="45">45 minutes</option>
+        <option value="60">60 minutes</option>
+      </select>
+      <div class="big accent" id="timerDisplay">25:00</div>
+      <div class="actions">
+        <button class="btn" id="timerButton" onclick="toggleTimer()">Start focus</button>
+        <button class="btn secondary" onclick="resetTimer()">Reset</button>
+      </div>
+      <p class="muted" id="timerMessage">One task. One session. Full attention.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mentalist">
+  <h2 class="section-title">🧠 Mentalist Lab</h2>
+  <p class="section-desc">Inspired by Patrick Jane's calm presence, observation, curiosity, humour and sharp listening. Practise real skills, not tricks to control people. Body language is ambiguous—look for context and ask instead of assuming.</p>
+  <div class="grid">
+    <div class="card span-7">
+      <div class="row"><h3 class="accent">Today's mental workout</h3><span class="tag">Daily practice</span></div>
+      <p class="quote" id="mentalChallenge">Notice three details about your surroundings that you normally overlook.</p>
+      <p class="muted" id="mentalCategory">OBSERVATION</p>
+      <div class="actions">
+        <button class="btn" onclick="newChallenge()">New challenge</button>
+        <button class="btn secondary" onclick="completeChallenge()">Mark complete</button>
+      </div>
+      <p class="muted" id="challengeStatus">Your challenge is waiting.</p>
+      <hr>
+      <h3>Skills to practise</h3>
+      <span class="tag">Observation</span><span class="tag">Active listening</span>
+      <span class="tag">Calm confidence</span><span class="tag">Wit</span>
+      <span class="tag">Curiosity</span><span class="tag">Social awareness</span>
+    </div>
+    <div class="card span-5">
+      <h3 class="purple">The Jane rules</h3>
+      <div class="list">
+        <div class="item"><span>01</span><div class="item-text"><strong>Observe first.</strong><br>Notice details before forming a conclusion.</div></div>
+        <div class="item"><span>02</span><div class="item-text"><strong>Listen fully.</strong><br>Don't prepare your reply while someone is speaking.</div></div>
+        <div class="item"><span>03</span><div class="item-text"><strong>Stay relaxed.</strong><br>Pause, breathe and speak clearly.</div></div>
+        <div class="item"><span>04</span><div class="item-text"><strong>Be curious.</strong><br>Ask thoughtful questions without prying.</div></div>
+        <div class="item"><span>05</span><div class="item-text"><strong>Use playful wit.</strong><br>Make jokes with people, not at their expense.</div></div>
+      </div>
+    </div>
+    <div class="card span-12">
+      <h3>✍️ Your observation journal</h3>
+      <p class="muted">Write what you noticed, what you assumed, and what else could explain it. Keep other people's private details out of your notes.</p>
+      <label for="reflection">Today's reflection</label>
+      <input id="reflection" placeholder="I noticed..., I assumed..., another explanation could be...">
+      <div class="actions">
+        <button class="btn" onclick="saveReflection()">Save reflection</button>
+      </div>
+      <div id="reflectionList" class="list" style="margin-top:14px"></div>
+    </div>
+  </div>
+</section>
+
+<section id="savings">
+  <h2 class="section-title">💰 Savings tracker</h2>
+  <div class="grid">
+    <div class="card span-6">
+      <h3 class="green">Your money goal</h3>
+      <div class="muted">Saved so far</div><div class="big green" id="savingsAmount">₹0</div>
+      <div class="progress"><div id="savingsBar"></div></div>
+      <div class="muted" id="savingsProgress">0% of your goal</div>
+      <label for="goalInput">Savings goal (₹)</label>
+      <input type="number" id="goalInput" min="1" placeholder="e.g. 10000">
+      <label for="amountInput">Add money saved (₹)</label>
+      <input type="number" id="amountInput" min="1" placeholder="e.g. 100">
+      <div class="actions">
+        <button class="btn" onclick="addSavings()">Add savings</button>
+        <button class="btn secondary" onclick="updateGoal()">Update goal</button>
+      </div>
+    </div>
+    <div class="card span-6">
+      <h3>Small steps count</h3>
+      <p class="quote">Your future is built by what you do with what you have today.</p>
+      <p class="muted">Record only real amounts you have saved. This tracker is a personal record, not a bank account.</p>
+      <hr>
+      <div class="row"><span class="muted">Savings goal</span><strong id="goalLabel">₹5,000</strong></div>
+      <div class="row" style="margin-top:12px"><span class="muted">Remaining</span><strong id="remainingLabel">₹5,000</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="settings">
+  <h2 class="section-title">⚙️ Personal settings</h2>
+  <div class="card">
+    <h3>Make Life OS yours</h3>
+    <label for="nameInput">Name or nickname</label>
+    <input id="nameInput" placeholder="What should your dashboard call you?">
+    <label for="targetDate">Countdown target date</label>
+    <input id="targetDate" type="date">
+    <p class="muted">The countdown starts from today's date. Choose a future date for a positive countdown.</p>
+    <div class="actions">
+      <button class="btn" onclick="saveSettings()">Save settings</button>
+      <button class="btn secondary" onclick="resetProgress()">Reset all progress</button>
+    </div>
+    <p class="muted" id="settingsMessage"></p>
+  </div>
+</section>
+</main>
+<footer>Life OS · Your universe, your responsibility. Keep moving forward ✦</footer>
+
+<script>
+const KEY = "lifeOS_v1";
+const todayKey = () => new Date().toLocaleDateString("en-CA");
+const defaultTopics = {
+  physics: ["Electric Charges and Fields","Electrostatic Potential and Capacitance","Current Electricity","Moving Charges and Magnetism","Magnetism and Matter","Electromagnetic Induction","Alternating Current","Electromagnetic Waves","Ray Optics","Wave Optics","Dual Nature of Radiation and Matter","Atoms","Nuclei","Semiconductor Electronics"],
+  chemistry: ["Solutions","Electrochemistry","Chemical Kinetics","d- and f-Block Elements","Coordination Compounds","Haloalkanes and Haloarenes","Alcohols, Phenols and Ethers","Aldehydes, Ketones and Carboxylic Acids","Amines","Biomolecules"],
+  math: ["Relations and Functions","Inverse Trigonometric Functions","Matrices","Determinants","Continuity and Differentiability","Applications of Derivatives","Integrals","Applications of Integrals","Differential Equations","Vector Algebra","Three Dimensional Geometry","Linear Programming","Probability"],
+  english: ["Reading comprehension","Writing skills","Literature: prose","Literature: poetry","Textbook revision","Grammar and editing","Timed sample paper"]
+};
+const defaultRoutine = ["Wake up and get ready","Study session 1","Revise yesterday's topics","Study session 2","Read or practise English","Exercise or walk","Mentalist Lab practice","Plan tomorrow and sleep on time"];
+const challenges = [
+ ["OBSERVATION","Notice five details in a familiar room that you usually ignore."],
+ ["ACTIVE LISTENING","Have one conversation where you listen without interrupting."],
+ ["MEMORY","After a conversation or lesson, recall three accurate details."],
+ ["CONFIDENCE","Speak slowly and clearly in one conversation today."],
+ ["CURIOSITY","Ask someone a thoughtful, open-ended question and listen to the answer."],
+ ["WIT","Think of a light, kind, playful response to an ordinary situation."],
+ ["PERSPECTIVE","When you make an assumption, write down two other possible explanations."],
+ ["BODY LANGUAGE","Notice your own posture and breathing; don't assume you know someone else's thoughts."]
+];
+let data;
+function loadData(){
+ try { data = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { data = {}; }
+ data.topics ||= {};
+ for(const s in defaultTopics) data.topics[s] ||= [];
+ data.routines ||= {};
+ data.routineDate ||= todayKey();
+ data.routineItems ||= defaultRoutine.map((text,i)=>({id:i+1,text}));
+ data.savings ||= 0;
+ data.goal ||= 5000;
+ data.reflections ||= [];
+ data.challengeIndex ??= 0;
+ data.challengeDoneDate ||= "";
+ data.challengeDone ||= false;
+ data.targetDate ||= "2027-02-15";
+ data.name ||= "";
+ if(data.routineDate !== todayKey()){
+   data.routineDate = todayKey();
+   data.routines = {};
+   data.challengeDone = false;
+ }
+ saveData();
+}
+function saveData(){localStorage.setItem(KEY,JSON.stringify(data));}
+function money(n){return "₹"+Number(n||0).toLocaleString("en-IN",{maximumFractionDigits:2});}
+function goTo(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});}
+function renderTopics(){
+ for(const [subject,topics] of Object.entries(defaultTopics)){
+   const root=document.getElementById(subject+"Topics");
+   root.innerHTML="";
+   topics.forEach((topic,i)=>{
+     const checked=(data.topics[subject]||[]).includes(i);
+     const label=document.createElement("label");
+     label.className="topic"+(checked?" done":"");
+     const cb=document.createElement("input");cb.type="checkbox";cb.checked=checked;
+     cb.addEventListener("change",()=>{
+       let arr=data.topics[subject]||[];
+       data.topics[subject]=cb.checked?[...new Set([...arr,i])]:arr.filter(n=>n!==i);
+       saveData();renderAll();
+     });
+     const span=document.createElement("span");span.textContent=topic;
+     label.append(cb,span);root.append(label);
+   });
+ }
+}
+function renderRoutine(){
+ const root=document.getElementById("routineList");root.innerHTML="";
+ data.routineItems.forEach(task=>{
+   const item=document.createElement("label");item.className="item"+(data.routines[task.id]?" done":"");
+   const cb=document.createElement("input");cb.type="checkbox";cb.checked=!!data.routines[task.id];
+   cb.addEventListener("change",()=>{data.routines[task.id]=cb.checked;saveData();renderAll();});
+   const span=document.createElement("span");span.className="item-text";span.textContent=task.text;
+   item.append(cb,span);root.append(item);
+ });
+ const done=data.routineItems.filter(t=>data.routines[t.id]).length;
+ document.getElementById("routineBadge").textContent=done+" done";
+}
+function addRoutine(){
+ const input=document.getElementById("newTask");const text=input.value.trim();
+ if(!text)return;
+ data.routineItems.push({id:Date.now(),text});input.value="";saveData();renderAll();
+}
+function renderSavings(){
+ document.getElementById("savedStat").textContent=money(data.savings);
+ document.getElementById("savingsAmount").textContent=money(data.savings);
+ document.getElementById("goalLabel").textContent=money(data.goal);
+ document.getElementById("remainingLabel").textContent=money(Math.max(0,data.goal-data.savings));
+ const pct=data.goal>0?Math.min(100,data.savings/data.goal*100):0;
+ document.getElementById("savingsBar").style.width=pct+"%";
+ document.getElementById("savingsProgress").textContent=Math.round(pct)+"% of your goal";
+ document.getElementById("goalInput").value=data.goal;
+}
+function addSavings(){
+ const n=Number(document.getElementById("amountInput").value);
+ if(!Number.isFinite(n)||n<=0){alert("Enter an amount greater than zero.");return;}
+ data.savings+=n;document.getElementById("amountInput").value="";saveData();renderAll();
+}
+function updateGoal(){
+ const n=Number(document.getElementById("goalInput").value);
+ if(!Number.isFinite(n)||n<=0){alert("Enter a goal greater than zero.");return;}
+ data.goal=n;saveData();renderAll();
+}
+function renderChallenge(){
+ const c=challenges[data.challengeIndex%challenges.length];
+ document.getElementById("mentalCategory").textContent=c[0];
+ document.getElementById("mentalChallenge").textContent=c[1];
+ document.getElementById("challengeStatus").textContent=data.challengeDoneDate===todayKey()&&data.challengeDone?"✓ Completed today. Great work!":"Your challenge is waiting.";
+}
+function newChallenge(){
+ data.challengeIndex=(data.challengeIndex+1)%challenges.length;
+ data.challengeDone=false;data.challengeDoneDate="";saveData();renderChallenge();
+}
+function completeChallenge(){
+ data.challengeDone=true;data.challengeDoneDate=todayKey();saveData();renderChallenge();renderDashboard();
+}
+function saveReflection(){
+ const input=document.getElementById("reflection");const text=input.value.trim();
+ if(!text){alert("Write a reflection first.");return;}
+ data.reflections.unshift({date:new Date().toLocaleDateString(),text});
+ data.reflections=data.reflections.slice(0,30);input.value="";saveData();renderReflections();renderDashboard();
+}
+function renderReflections(){
+ const root=document.getElementById("reflectionList");root.innerHTML="";
+ if(!data.reflections.length){root.innerHTML='<p class="muted">Your saved reflections will appear here.</p>';return;}
+ data.reflections.forEach((r,i)=>{
+   const box=document.createElement("div");box.className="item";
+   const content=document.createElement("div");content.className="item-text";
+   const date=document.createElement("strong");date.textContent=r.date+" — ";
+   const text=document.createElement("span");text.textContent=r.text;
+   content.append(date,text);
+   const del=document.createElement("button");del.className="btn secondary small";del.textContent="Delete";
+   del.addEventListener("click",()=>{data.reflections.splice(i,1);saveData();renderReflections();renderDashboard();});
+   box.append(content,del);root.append(box);
+ });
+}
+function renderDashboard(){
+ const total=Object.values(defaultTopics).reduce((sum,a)=>sum+a.length,0);
+ const done=Object.entries(defaultTopics).reduce((sum,[s,a])=>sum+(data.topics[s]||[]).filter(i=>i<a.length).length,0);
+ const tp=total?done/total*100:0;
+ document.getElementById("syllabusStat").textContent=Math.round(tp)+"%";
+ document.getElementById("syllabusBar").style.width=tp+"%";
+ document.getElementById("topicCount").textContent=done+" of "+total+" starter topics completed";
+ document.getElementById("doneTopics").textContent=done;
+ const rDone=data.routineItems.filter(t=>data.routines[t.id]).length;
+ const rp=data.routineItems.length?rDone/data.routineItems.length*100:0;
+ document.getElementById("routineStat").textContent=Math.round(rp)+"%";
+ document.getElementById("routineBar").style.width=rp+"%";
+ document.getElementById("routineCount").textContent=rDone+" of "+data.routineItems.length+" tasks completed";
+ document.getElementById("doneRoutine").textContent=rDone;
+ document.getElementById("mentalCount").textContent=data.reflections.length;
+ document.getElementById("today").textContent=new Date().toLocaleDateString(undefined,{weekday:"long",year:"numeric",month:"long",day:"numeric"})+(data.name?" · Welcome, "+data.name:"");
+ const target=new Date(data.targetDate+"T00:00:00");
+ const now=new Date();now.setHours(0,0,0,0);
+ const days=Math.ceil((target-now)/86400000);
+ document.getElementById("countdownStat").textContent=Number.isFinite(days)?(days<0?Math.abs(days)+" days ago":days===0?"Today":days+" days"):"—";
+ document.getElementById("countdownLabel").textContent=days<0?"That target date has passed. Change it in Settings.":"Until "+target.toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"});
+ document.getElementById("targetDate").value=data.targetDate;
+ document.getElementById("nameInput").value=data.name;
+ document.getElementById("mission").textContent=data.challengeDoneDate===todayKey()&&data.challengeDone?"You completed today's Mentalist Lab challenge. Keep that momentum going.":"Choose one important study task and one small personal-growth task. Finish them before chasing perfection.";
+}
+function renderAll(){
+ renderTopics();renderRoutine();renderSavings();renderChallenge();renderReflections();renderDashboard();
+}
+function saveSettings(){
+ data.name=document.getElementById("nameInput").value.trim();
+ data.targetDate=document.getElementById("targetDate").value||"2027-02-15";
+ saveData();renderAll();
+ document.getElementById("settingsMessage").textContent="Settings saved on this device.";
+}
+function resetProgress(){
+ if(!confirm("This will delete all Life OS progress saved in this browser. Continue?"))return;
+ localStorage.removeItem(KEY);loadData();renderAll();
+ document.getElementById("settingsMessage").textContent="Progress reset.";
+}
+let timerInterval=null,timerRemaining=25*60;
+function updateTimerDisplay(){
+ const m=Math.floor(timerRemaining/60),s=timerRemaining%60;
+ document.getElementById("timerDisplay").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+function toggleTimer(){
+ const btn=document.getElementById("timerButton");
+ if(timerInterval){clearInterval(timerInterval);timerInterval=null;btn.textContent="Resume focus";return;}
+ if(timerRemaining<=0)timerRemaining=Number(document.getElementById("focusMinutes").value)*60;
+ btn.textContent="Pause";
+ timerInterval=setInterval(()=>{
+   timerRemaining--;updateTimerDisplay();
+   if(timerRemaining<=0){
+     clearInterval(timerInterval);timerInterval=null;btn.textContent="Start focus";
+     document.getElementById("timerMessage").textContent="Session complete. Take a short break.";
+     alert("Focus session complete! Well done.");
+   }
+ },1000);
+}
+function resetTimer(){
+ if(timerInterval){clearInterval(timerInterval);timerInterval=null;}
+ timerRemaining=Number(document.getElementById("focusMinutes").value)*60;
+ document.getElementById("timerButton").textContent="Start focus";
+ document.getElementById("timerMessage").textContent="One task. One session. Full attention.";
+ updateTimerDisplay();
+}
+document.getElementById("focusMinutes").addEventListener("change",resetTimer);
+loadData();renderAll();updateTimerDisplay();
+</script>
+</body>
+</html>
