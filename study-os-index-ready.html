@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080817">
+<title>Study OS — Your Study Universe</title>
+<style>
+:root{--bg:#080817;--panel:#111126;--panel2:#171733;--text:#f4f2ff;--muted:#aaa8c8;--cyan:#63e8ff;--purple:#a78bfa;--pink:#ff8fce;--green:#72f1b8;--border:rgba(180,170,255,.17)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#272052 0,transparent 38%),radial-gradient(ellipse at 100% 30%,#132d49 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}header{padding:26px 18px 15px;max-width:1100px;margin:auto}.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:3px;text-transform:uppercase}h1{font-size:clamp(30px,6vw,48px);margin:9px 0 6px;letter-spacing:-1.5px}h1 span{color:var(--cyan)}.subtitle,.muted,.desc{color:var(--muted);line-height:1.6}.subtitle{margin:0}nav{display:flex;gap:8px;overflow:auto;padding:12px 18px 18px;max-width:1100px;margin:auto}nav a{white-space:nowrap;text-decoration:none;color:var(--muted);background:#121226;border:1px solid var(--border);padding:10px 13px;border-radius:12px;font-size:13px}main{max-width:1100px;margin:auto;padding:0 18px 50px}section{scroll-margin-top:20px;margin:0 0 23px}.section-title{font-size:21px;margin:0 0 13px}.desc{font-size:13px;margin:-5px 0 15px}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}.card{background:linear-gradient(145deg,rgba(24,24,52,.96),rgba(14,14,32,.96));border:1px solid var(--border);border-radius:19px;padding:18px;min-width:0}.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}.card h3{margin:0 0 8px;font-size:16px}.muted{font-size:13px}.big{font-size:30px;font-weight:800;margin:8px 0}.accent{color:var(--cyan)}.purple{color:var(--purple)}.pink{color:var(--pink)}.green{color:var(--green)}.progress{height:7px;background:#292744;border-radius:20px;overflow:hidden;margin:12px 0}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:20px;transition:width .25s}.btn{background:linear-gradient(110deg,#6b5bdb,#347fbb);color:white;border:0;border-radius:11px;padding:10px 13px;font-weight:650}.btn.secondary{background:#242440;border:1px solid var(--border)}.btn:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}input,select,textarea{width:100%;background:#0b0b1b;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:11px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--cyan)}label{display:block;font-size:12px;color:var(--muted);margin:12px 0 6px}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.list{display:grid;gap:9px}.item{display:flex;gap:10px;align-items:flex-start;padding:11px;border:1px solid var(--border);border-radius:12px;background:#0c0c1e}.item input[type=checkbox],.topic input{width:18px;accent-color:var(--cyan);margin-top:2px;flex-shrink:0}.item-text{flex:1;font-size:13px;line-height:1.5}.done .item-text{text-decoration:line-through;color:#77758f}.topic-list{margin-top:12px;display:grid;gap:8px}.topic{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#d9d6ee;line-height:1.5}.topic.done span{text-decoration:line-through;color:#77758f}.tag{display:inline-block;padding:5px 8px;border:1px solid var(--border);border-radius:9px;font-size:11px;color:var(--cyan);margin:0 5px 6px 0}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#0c0c1e;padding:12px;border-radius:12px;border:1px solid var(--border)}.stat strong{display:block;font-size:22px;margin-bottom:4px}.stat span{font-size:11px;color:var(--muted)}.status{padding:11px 13px;border-radius:10px;background:#111126;border:1px solid var(--border);font-size:13px;line-height:1.5;white-space:pre-wrap}.hidden{display:none!important}footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}hr{border:0;border-top:1px solid var(--border);margin:17px 0}@media(max-width:760px){.s3,.s4,.s5,.s6,.s7,.s8{grid-column:span 12}header{padding-top:22px}.card{padding:15px}.stat strong{font-size:19px}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">YOUR PERSONAL UNIVERSE · STUDY OS</div><h1>Study <span>OS.</span></h1><p class="subtitle">Study consistently. Track your progress. Build your next version.</p></header>
+<main>
+<section id="authSection">
+  <div class="card">
+    <h2 class="section-title">Welcome to your study universe</h2>
+    <p class="desc">Create an account with your username, email and password, or sign in with your email and password. Your study records are saved to your Supabase account.</p>
+    <div class="grid">
+      <div class="s6">
+        <h3>Create account</h3>
+        <label for="signupUsername">Username (3–20 letters, numbers or underscores)</label><input id="signupUsername" autocomplete="username" placeholder="e.g. study_star">
+        <label for="signupName">Display name (optional)</label><input id="signupName" autocomplete="nickname" placeholder="Your name or nickname">
+        <label for="signupEmail">Email</label><input id="signupEmail" type="email" autocomplete="email" placeholder="you@example.com">
+        <label for="signupPassword">Password (at least 8 characters)</label><input id="signupPassword" type="password" autocomplete="new-password" placeholder="Create a strong password">
+        <div class="actions"><button class="btn" id="signupBtn">Create account</button></div>
+      </div>
+      <div class="s6">
+        <h3>Sign in</h3>
+        <label for="loginEmail">Email</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com">
+        <label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password">
+        <div class="actions"><button class="btn" id="loginBtn">Sign in</button><button class="btn secondary" id="resetPasswordBtn">Reset password</button></div>
+        <p class="muted">Supabase email confirmation may be required before your first sign-in. Username-only login is not enabled in this starter; it requires a secure server-side username lookup.</p>
+      </div>
+    </div>
+    <p id="authMessage" class="status" role="status">First, add your Supabase Project URL and Publishable Key in the setup section of this file.</p>
+  </div>
+</section>
+
+<section id="setupSection">
+ <div class="card">
+  <h3>One-time connection setup</h3>
+  <p class="muted">Enter the public Project URL and Publishable Key from Supabase. These are saved only in this browser for convenience. Never enter a secret or service-role key here.</p>
+  <label for="projectUrl">Supabase Project URL</label><input id="projectUrl" type="url" placeholder="https://your-project.supabase.co">
+  <label for="publishableKey">Supabase Publishable Key (or legacy anon key)</label><input id="publishableKey" type="password" placeholder="sb_publishable_...">
+  <div class="actions"><button class="btn" id="connectBtn">Connect to Supabase</button><button class="btn secondary" id="forgetConfigBtn">Clear saved connection</button></div>
+  <p class="muted">The project must have the Study OS tables and Row Level Security policies created by the SQL setup step.</p>
+ </div>
+</section>
+
+<div id="appSection" class="hidden">
+ <nav><a href="#dashboard">Dashboard</a><a href="#study">Study tracker</a><a href="#routine">Daily plan</a><a href="#mentalist">Mentalist Lab</a><a href="#settings">Settings</a></nav>
+ <section id="dashboard"><h2 class="section-title">Your universe</h2><p class="desc" id="today"></p>
+  <div class="grid">
+   <div class="card s3"><div class="muted">Syllabus completed</div><div class="big accent" id="syllabusStat">0%</div><div class="progress"><div id="syllabusBar"></div></div><div class="muted" id="topicCount">0 topics completed</div></div>
+   <div class="card s3"><div class="muted">Today's tasks</div><div class="big purple" id="taskStat">0%</div><div class="progress"><div id="taskBar"></div></div><div class="muted" id="taskCount">0 tasks completed</div></div>
+   <div class="card s3"><div class="muted">Study minutes today</div><div class="big green" id="minutesStat">0</div><div class="muted">Minutes logged today</div></div>
+   <div class="card s3"><div class="muted">Days until target</div><div class="big pink" id="countdownStat">—</div><div class="muted" id="countdownLabel">Set a target date in Settings.</div></div>
+   <div class="card s7"><h3>✦ Today's mission</h3><p class="quote">Do one focused session, review one difficult concept, and record what you learned.</p><div class="actions"><button class="btn" onclick="document.getElementById('study').scrollIntoView({behavior:'smooth'})">Study now →</button><button class="btn secondary" onclick="document.getElementById('routine').scrollIntoView({behavior:'smooth'})">Open daily plan →</button></div></div>
+   <div class="card s5"><h3>📊 Personal progress</h3><div class="stat-grid"><div class="stat"><strong id="doneTopics">0</strong><span>Topics done</span></div><div class="stat"><strong id="doneTasks">0</strong><span>Tasks done</span></div><div class="stat"><strong id="reflectionCount">0</strong><span>Reflections</span></div></div><p class="muted">Signed in as <strong id="currentUser"></strong></p><button class="btn secondary small" id="logoutBtn">Sign out</button></div>
+  </div>
+ </section>
+ <section id="study"><h2 class="section-title">📚 Study tracker</h2><p class="desc">Tick topics to save your progress online. These are starter topics, not a complete official NEET syllabus; compare with the current official syllabus.</p><div class="grid" id="subjectGrid"></div></section>
+ <section id="routine"><h2 class="section-title">⚡ Daily plan</h2><p class="desc">Tasks are saved to your account. Add your own tasks and tick them off as you finish.</p><div class="grid"><div class="card s7"><h3>Today's checklist</h3><div id="taskList" class="list"></div><hr><label for="newTask">Add a task</label><input id="newTask" maxlength="200" placeholder="e.g. Revise electrostatics"><div class="actions"><button class="btn" id="addTaskBtn">+ Add task</button></div></div><div class="card s5"><h3>Focus session</h3><label for="focusMinutes">Duration</label><select id="focusMinutes"><option value="15">15 minutes</option><option value="25" selected>25 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option></select><div class="big accent" id="timerDisplay">25:00</div><div class="actions"><button class="btn" id="timerButton">Start focus</button><button class="btn secondary" id="resetTimer">Reset</button></div><p id="timerMessage" class="muted">One task. One session. Full attention.</p><hr><h3>Log study time</h3><label for="minutesInput">Minutes studied today</label><input id="minutesInput" type="number" min="1" max="1440" placeholder="e.g. 45"><div class="actions"><button class="btn" id="logMinutesBtn">Save minutes</button></div></div></div></section>
+ <section id="mentalist"><h2 class="section-title">🧠 Mentalist Lab</h2><p class="desc">Practise observation, active listening, calm confidence and curiosity. Body language is ambiguous: consider context rather than assuming you know what someone thinks.</p><div class="grid"><div class="card s7"><div class="row"><h3 class="accent">Today's mental workout</h3><span class="tag">Daily practice</span></div><p id="mentalChallenge">Notice five details in a familiar room that you usually ignore.</p><p id="mentalCategory" class="muted">OBSERVATION</p><div class="actions"><button class="btn" id="newChallenge">New challenge</button><button class="btn secondary" id="completeChallenge">Mark complete</button></div><p id="challengeStatus" class="muted">Your challenge is waiting.</p><hr><h3>Observation journal</h3><p class="muted">Write what you noticed, what you assumed, and other possible explanations. Avoid other people's private details.</p><label for="reflection">Reflection</label><textarea id="reflection" rows="3" maxlength="2000" placeholder="I noticed..., I assumed..., another explanation could be..."></textarea><div class="actions"><button class="btn" id="saveReflection">Save reflection</button></div><div id="reflectionList" class="list" style="margin-top:14px"></div></div><div class="card s5"><h3 class="purple">The Jane rules</h3><div class="list"><div class="item"><span>01</span><div class="item-text"><strong>Observe first.</strong><br>Notice details before forming a conclusion.</div></div><div class="item"><span>02</span><div class="item-text"><strong>Listen fully.</strong><br>Don't prepare your reply while someone is speaking.</div></div><div class="item"><span>03</span><div class="item-text"><strong>Stay relaxed.</strong><br>Pause, breathe and speak clearly.</div></div><div class="item"><span>04</span><div class="item-text"><strong>Be curious.</strong><br>Ask thoughtful questions without prying.</div></div></div></div></div></section>
+ <section id="settings"><h2 class="section-title">⚙️ Settings</h2><div class="card"><label for="nameInput">Display name</label><input id="nameInput" maxlength="80" placeholder="Name or nickname"><label for="targetDate">Target date</label><input id="targetDate" type="date"><div class="actions"><button class="btn" id="saveSettings">Save settings</button></div><p class="muted" id="settingsMessage"></p></div></section>
+</div>
+</main><footer>Study OS · Your universe, your effort. Keep moving forward ✦</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+'use strict';
+const CONFIG_KEY='studyOS_supabase_config';
+const SUPABASE_URL='https://skuplgmavgfxglaimxtw.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_iPKQdimPPK_rloD2nUqF6Q_B24Wp-UA';
+const subjects={
+ physics:['Electric Charges and Fields','Electrostatic Potential and Capacitance','Current Electricity','Moving Charges and Magnetism','Magnetism and Matter','Electromagnetic Induction','Alternating Current','Electromagnetic Waves','Ray Optics','Wave Optics','Dual Nature of Radiation and Matter','Atoms','Nuclei','Semiconductor Electronics'],
+ chemistry:['Some Basic Concepts of Chemistry','Atomic Structure','Chemical Bonding and Molecular Structure','Chemical Thermodynamics','Solutions','Equilibrium','Redox Reactions and Electrochemistry','Chemical Kinetics','Periodic Table and Periodicity','Coordination Compounds','Organic Chemistry: Basic Principles','Hydrocarbons','Alcohols, Phenols and Ethers','Aldehydes, Ketones and Carboxylic Acids','Amines','Biomolecules'],
+ botany:['The Living World','Biological Classification','Plant Kingdom','Morphology of Flowering Plants','Anatomy of Flowering Plants','Cell: The Unit of Life','Cell Cycle and Cell Division','Photosynthesis in Higher Plants','Respiration in Plants','Plant Growth and Development','Sexual Reproduction in Flowering Plants','Principles of Inheritance and Variation','Molecular Basis of Inheritance','Ecosystem','Biodiversity and Conservation'],
+ zoology:['Animal Kingdom','Structural Organisation in Animals','Biomolecules','Locomotion and Movement','Neural Control and Coordination','Chemical Coordination and Integration','Human Physiology revision','Human Reproduction','Reproductive Health','Evolution','Human Health and Disease','Microbes in Human Welfare','Biotechnology: Principles and Processes','Biotechnology and its Applications']
+};
+const challenges=[['OBSERVATION','Notice five details in a familiar room that you usually ignore.'],['ACTIVE LISTENING','Have one conversation where you listen without interrupting.'],['MEMORY','After a lesson, recall three accurate details without looking at your notes.'],['CONFIDENCE','Speak slowly and clearly in one conversation today.'],['CURIOSITY','Ask someone a thoughtful, open-ended question and listen to the answer.'],['PERSPECTIVE','When you make an assumption, write down two other possible explanations.']];
+let supabaseClient=null,currentUser=null,profile=null,progressRows=[],tasks=[],logs=[],reflections=[],timerInterval=null,timerRemaining=1500,challengeIndex=0,challengeDone=false;
+const $=id=>document.getElementById(id);
+function message(id,text){$(id).textContent=text;}
+function getConfig(){try{const saved=JSON.parse(localStorage.getItem(CONFIG_KEY)||'{}');return {url:saved.url||SUPABASE_URL,key:saved.key||SUPABASE_PUBLISHABLE_KEY}}catch{return {url:SUPABASE_URL,key:SUPABASE_PUBLISHABLE_KEY}}}
+function initConfig(){const c=getConfig();$('projectUrl').value=c.url||SUPABASE_URL;$('publishableKey').value=c.key||SUPABASE_PUBLISHABLE_KEY;if(c.url&&c.key)connect(c.url,c.key,false);}
+async function connect(url,key,save=true){
+ try{
+  if(!window.supabase)throw new Error('Supabase client library did not load. Check your internet connection and reload.');
+  const u=new URL(url);if(u.protocol!=='https:')throw new Error('Use the HTTPS Project URL from Supabase.');
+  supabaseClient=window.supabase.createClient(url.trim(),key.trim());
+  const {data:{session},error}=await supabaseClient.auth.getSession();if(error)throw error;
+  if(save)localStorage.setItem(CONFIG_KEY,JSON.stringify({url:url.trim(),key:key.trim()}));
+  message('authMessage','Connected to Supabase. You can create an account or sign in.');
+  if(session)await handleSession(session);return true;
+ }catch(e){supabaseClient=null;message('authMessage','Connection failed: '+e.message);return false;}
+}
+$('connectBtn').addEventListener('click',()=>{const url=$('projectUrl').value.trim(),key=$('publishableKey').value.trim();if(!url||!key){message('authMessage','Enter both the Project URL and Publishable Key.');return;}connect(url,key,true);});
+$('forgetConfigBtn').addEventListener('click',()=>{localStorage.removeItem(CONFIG_KEY);$('projectUrl').value='';$('publishableKey').value='';supabaseClient=null;message('authMessage','Saved connection details cleared from this browser.');});
+function ensureConnected(){if(!supabaseClient)throw new Error('Connect to Supabase first using the connection panel.');}
+$('signupBtn').addEventListener('click',async()=>{
+ try{ensureConnected();const username=$('signupUsername').value.trim().toLowerCase(),display_name=$('signupName').value.trim(),email=$('signupEmail').value.trim(),password=$('signupPassword').value;
+ if(!/^[a-z0-9_]{3,20}$/.test(username))throw new Error('Username must be 3–20 lowercase letters, numbers or underscores.');
+ if(!email)throw new Error('Enter your email address.');if(password.length<8)throw new Error('Use a password with at least 8 characters.');
+ const {data,error}=await supabaseClient.auth.signUp({email,password,options:{data:{username,display_name}}});if(error)throw error;
+ if(data.session){await handleSession(data.session);message('authMessage','Account created and signed in.');}
+ else message('authMessage','Sign-up submitted. Check your email for the confirmation link if confirmation is enabled. Then sign in with your email and password.');
+ }catch(e){message('authMessage','Sign-up error: '+e.message);}
+});
+$('loginBtn').addEventListener('click',async()=>{
+ try{ensureConnected();const email=$('loginEmail').value.trim(),password=$('loginPassword').value;if(!email||!password)throw new Error('Enter your email and password.');
+ const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});if(error)throw error;await handleSession(data.session);message('authMessage','Signed in successfully.');
+ }catch(e){message('authMessage','Sign-in error: '+e.message);}
+});
+$('resetPasswordBtn').addEventListener('click',async()=>{try{ensureConnected();const email=$('loginEmail').value.trim();if(!email)throw new Error('Enter your email in the sign-in email field first.');const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0]});if(error)throw error;message('authMessage','If an account exists for that email, password reset instructions have been sent.');}catch(e){message('authMessage','Password reset error: '+e.message);}});
+async function handleSession(session){
+ currentUser=session?.user||null;
+ if(!currentUser){$('appSection').classList.add('hidden');$('authSection').classList.remove('hidden');return;}
+ $('authSection').classList.add('hidden');$('setupSection').classList.add('hidden');$('appSection').classList.remove('hidden');
+ await loadProfile();await loadAll();
+ if(supabaseClient){supabaseClient.auth.onAuthStateChange((event,s)=>{if(event==='SIGNED_OUT')handleSession(null);});}
+}
+async function loadProfile(){
+ const meta=currentUser.user_metadata||{};let {data,error}=await supabaseClient.from('profiles').select('*').eq('id',currentUser.id).maybeSingle();
+ if(error)throw error;
+ if(!data){
+  const suggested=(meta.username||('student_'+currentUser.id.slice(0,8))).toLowerCase().replace(/[^a-z0-9_]/g,'_').slice(0,20);
+  const row={id:currentUser.id,username:suggested,display_name:meta.display_name||''};
+  const result=await supabaseClient.from('profiles').insert(row).select().single();
+  if(result.error)throw new Error('Could not create profile: '+result.error.message+' Make sure the SQL setup ran successfully and email confirmation/login is complete.');
+  data=result.data;
+ }
+ profile=data;$('currentUser').textContent=profile.display_name||profile.username||currentUser.email;$('nameInput').value=profile.display_name||'';
+}
+async function loadAll(){
+ const [p,t,l]=await Promise.all([
+  supabaseClient.from('study_progress').select('*').eq('user_id',currentUser.id),
+  supabaseClient.from('tasks').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:true}),
+  supabaseClient.from('daily_logs').select('*').eq('user_id',currentUser.id).eq('log_date',todayKey()).maybeSingle()
+ ]);
+ for(const r of [p,t,l])if(r.error)throw new Error(r.error.message);
+ progressRows=p.data||[];tasks=t.data||[];logs=l.data?[l.data]:[];renderAll();
+}
+function todayKey(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function safeEl(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
+function renderSubjects(){
+ const grid=$('subjectGrid');grid.innerHTML='';
+ for(const [subject,topics] of Object.entries(subjects)){
+  const card=safeEl('div','card s6');const h=safeEl('h3',subject==='physics'?'accent':subject==='chemistry'?'pink':subject==='botany'?'green':'purple',subject[0].toUpperCase()+subject.slice(1));card.append(h);
+  const list=safeEl('div','topic-list');
+  topics.forEach((topic,i)=>{
+   const row=progressRows.find(r=>r.subject===subject&&r.chapter_id===String(i));const label=safeEl('label','topic'+(row?.completed?' done':''));const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!row?.completed;
+   cb.addEventListener('change',async()=>{
+    cb.disabled=true;try{const payload={user_id:currentUser.id,subject,chapter_id:String(i),completed:cb.checked,updated_at:new Date().toISOString()};
+     const {data,error}=await supabaseClient.from('study_progress').upsert(payload,{onConflict:'user_id,subject,chapter_id'}).select().single();if(error)throw error;
+     const ix=progressRows.findIndex(r=>r.subject===subject&&r.chapter_id===String(i));if(ix>=0)progressRows[ix]=data;else progressRows.push(data);renderAll();
+    }catch(e){cb.checked=!cb.checked;message('settingsMessage','Could not save topic: '+e.message);}finally{cb.disabled=false;}
+   });
+   label.append(cb,safeEl('span','',topic));list.append(label);
+  });card.append(list);grid.append(card);
+ }
+}
+function renderTasks(){
+ const root=$('taskList');root.innerHTML='';
+ if(!tasks.length)root.append(safeEl('p','muted','No tasks yet. Add your first task below.'));
+ tasks.forEach(task=>{const row=safeEl('label','item'+(task.completed?' done':''));const cb=document.createElement('input');cb.type='checkbox';cb.checked=task.completed;cb.addEventListener('change',async()=>{cb.disabled=true;try{const {data,error}=await supabaseClient.from('tasks').update({completed:cb.checked}).eq('id',task.id).eq('user_id',currentUser.id).select().single();if(error)throw error;tasks=tasks.map(t=>t.id===task.id?data:t);renderAll();}catch(e){message('settingsMessage','Could not update task: '+e.message);}finally{cb.disabled=false;}});
+ const text=safeEl('span','item-text',task.title);const del=safeEl('button','btn secondary small','Delete');del.type='button';del.addEventListener('click',async()=>{if(!confirm('Delete this task?'))return;const {error}=await supabaseClient.from('tasks').delete().eq('id',task.id).eq('user_id',currentUser.id);if(error){message('settingsMessage','Could not delete task: '+error.message);return;}tasks=tasks.filter(t=>t.id!==task.id);renderAll();});row.append(cb,text,del);root.append(row);});
+}
+$('addTaskBtn').addEventListener('click',async()=>{try{const title=$('newTask').value.trim();if(!title)throw new Error('Type a task first.');const {data,error}=await supabaseClient.from('tasks').insert({user_id:currentUser.id,title}).select().single();if(error)throw error;tasks.push(data);$('newTask').value='';renderAll();}catch(e){message('settingsMessage','Could not add task: '+e.message);}});
+$('logMinutesBtn').addEventListener('click',async()=>{try{const n=Number($('minutesInput').value);if(!Number.isInteger(n)||n<1||n>1440)throw new Error('Enter a whole number between 1 and 1440.');const old=logs[0];const {data,error}=await supabaseClient.from('daily_logs').upsert({user_id:currentUser.id,log_date:todayKey(),study_minutes:(old?.study_minutes||0)+n},{onConflict:'user_id,log_date'}).select().single();if(error)throw error;logs=[data];$('minutesInput').value='';renderAll();}catch(e){message('settingsMessage','Could not log study time: '+e.message);}});
+function renderAll(){renderSubjects();renderTasks();const total=Object.values(subjects).reduce((a,b)=>a+b.length,0),done=progressRows.filter(r=>r.completed).length;const pct=total?Math.round(done/total*100):0;$('syllabusStat').textContent=pct+'%';$('syllabusBar').style.width=pct+'%';$('topicCount').textContent=`${done} of ${total} starter topics completed`;$('doneTopics').textContent=done;$('doneTasks').textContent=tasks.filter(t=>t.completed).length;const tp=tasks.length?Math.round(tasks.filter(t=>t.completed).length/tasks.length*100):0;$('taskStat').textContent=tp+'%';$('taskBar').style.width=tp+'%';$('taskCount').textContent=`${tasks.filter(t=>t.completed).length} of ${tasks.length} tasks completed`;$('minutesStat').textContent=logs[0]?.study_minutes||0;$('today').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' · '+(profile?.display_name||profile?.username||currentUser?.email||'');const date=$('targetDate').value; if(date){const target=new Date(date+'T00:00:00'),now=new Date();now.setHours(0,0,0,0);const days=Math.ceil((target-now)/86400000);$('countdownStat').textContent=days<0?Math.abs(days)+' days ago':days===0?'Today':days+' days';$('countdownLabel').textContent=days<0?'Target date has passed.':'Until '+target.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'});}else{$('countdownStat').textContent='—';$('countdownLabel').textContent='Set a target date in Settings.';}renderChallenge();}
+$('saveSettings').addEventListener('click',async()=>{try{const display_name=$('nameInput').value.trim();const {data,error}=await supabaseClient.from('profiles').update({display_name}).eq('id',currentUser.id).select().single();if(error)throw error;profile=data;$('currentUser').textContent=display_name||profile.username;message('settingsMessage','Settings saved to your account.');renderAll();}catch(e){message('settingsMessage','Could not save settings: '+e.message);}});
+$('logoutBtn').addEventListener('click',async()=>{const {error}=await supabaseClient.auth.signOut();if(error)message('authMessage','Sign-out error: '+error.message);else{currentUser=null;profile=null;progressRows=[];tasks=[];logs=[];$('appSection').classList.add('hidden');$('setupSection').classList.remove('hidden');$('authSection').classList.remove('hidden');message('authMessage','Signed out successfully.');}});
+function renderChallenge(){const c=challenges[challengeIndex%challenges.length];$('mentalCategory').textContent=c[0];$('mentalChallenge').textContent=c[1];$('challengeStatus').textContent=challengeDone?'✓ Marked complete for this page session.':'Your challenge is waiting.';}
+$('newChallenge').addEventListener('click',()=>{challengeIndex=(challengeIndex+1)%challenges.length;challengeDone=false;renderChallenge();});$('completeChallenge').addEventListener('click',()=>{challengeDone=true;renderChallenge();});
+$('saveReflection').addEventListener('click',()=>{const text=$('reflection').value.trim();if(!text){message('settingsMessage','Write a reflection first.');return;}message('settingsMessage','Reflection feature is a visual starter in this version; reflections are not yet saved to Supabase.');});
+function updateTimer(){const m=Math.floor(timerRemaining/60),s=timerRemaining%60;$('timerDisplay').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+$('timerButton').addEventListener('click',()=>{if(timerInterval){clearInterval(timerInterval);timerInterval=null;$('timerButton').textContent='Resume focus';return;}if(timerRemaining<=0)timerRemaining=Number($('focusMinutes').value)*60;$('timerButton').textContent='Pause';timerInterval=setInterval(()=>{timerRemaining--;updateTimer();if(timerRemaining<=0){clearInterval(timerInterval);timerInterval=null;$('timerButton').textContent='Start focus';$('timerMessage').textContent='Session complete. Take a short break.';alert('Focus session complete! Well done.');}},1000);});
+$('resetTimer').addEventListener('click',()=>{if(timerInterval)clearInterval(timerInterval);timerInterval=null;timerRemaining=Number($('focusMinutes').value)*60;$('timerButton').textContent='Start focus';$('timerMessage').textContent='One task. One session. Full attention.';updateTimer();});$('focusMinutes').addEventListener('change',()=> $('resetTimer').click());
+initConfig();
+</script>
+</body>
+</html>
