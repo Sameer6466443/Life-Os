@@ -1,446 +1,299 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101412">
-<title>Study OS — Built by Sameer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080817">
+<title>Study OS — Study Smarter. Become Better.</title>
 <style>
-:root {
-  --bg:#101412;
-  --surface:#171d19;
-  --surface2:#1c241f;
-  --text:#f0f2ed;
-  --muted:#a0aaa2;
-  --accent:#b9f279;
-  --line:#303a32;
-}
+:root{--bg:#080817;--panel:#111126;--panel2:#171733;--text:#f4f2ff;--muted:#aaa8c8;--cyan:#63e8ff;--purple:#a78bfa;--pink:#ff8fce;--green:#72f1b8;--border:rgba(180,170,255,.17)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:"DM Sans",sans-serif;font-size:14px;
-  line-height:1.6;
-}
-button,input{font:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
+body{margin:0;background:radial-gradient(ellipse at 10% 0%,#272052 0,transparent 38%),radial-gradient(ellipse at 100% 30%,#132d49 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh;overflow-x:hidden}
+button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-button:focus-visible,a:focus-visible,input:focus-visible{
-  outline:2px solid var(--accent);outline-offset:3px
-}
-.wrap{width:min(1080px,calc(100% - 40px));margin:auto}
-header{
-  height:72px;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;justify-content:space-between;gap:20px
-}
-.brand{display:flex;align-items:center;gap:11px;font-weight:700}
-.logo{
-  width:34px;height:34px;display:grid;place-items:center;
-  background:var(--accent);color:#111811;border-radius:9px;
-  font-family:"Space Grotesk";font-size:20px;font-weight:700
-}
-.brand small{display:block;font-size:9px;letter-spacing:2px;color:var(--muted)}
-.nav{display:flex;align-items:center;gap:23px;color:var(--muted);font-size:12px}
-.nav a:hover{color:var(--accent)}
-.btn{
-  padding:11px 16px;border:1px solid var(--accent);border-radius:8px;
-  background:var(--accent);color:#111811;font-weight:700;
-  transition:transform .2s,background .2s
-}
-.btn:hover{transform:translateY(-2px);background:#d1ffa0}
-.btn.outline{background:transparent;color:var(--text);border-color:var(--line)}
-.btn.outline:hover{border-color:var(--accent);color:var(--accent)}
-.hero{
-  min-height:390px;padding:57px 0 48px;display:grid;
-  grid-template-columns:1.2fr .8fr;align-items:center;gap:50px
-}
-.eyebrow{
-  color:var(--accent);font-size:10px;letter-spacing:2px;
-  font-weight:700;text-transform:uppercase
-}
-h1,h2,h3,p{margin-top:0}
-h1,h2,h3{font-family:"Space Grotesk",sans-serif}
-h1{
-  max-width:620px;font-size:clamp(39px,5.5vw,62px);
-  letter-spacing:-2.7px;line-height:1.06;margin:17px 0
-}
-h1 em{font-style:normal;color:var(--accent)}
-.intro{max-width:500px;color:var(--muted);font-size:14px;line-height:1.9}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.creator{font-size:11px;color:var(--muted);margin-top:24px}
-.creator-name{
-  display:inline-block;color:var(--accent);font-weight:700;
-  letter-spacing:1.5px;padding:0 3px;
-  text-shadow:0 0 15px #b9f27955;
-  animation:glow 3s ease-in-out infinite alternate
-}
-@keyframes glow{
-  from{text-shadow:0 0 4px #b9f27933}
-  to{text-shadow:0 0 13px #b9f27999}
-}
-.hero-art{
-  border:1px solid var(--line);border-radius:14px;
-  background:linear-gradient(145deg,#1d2820,#151a17);
-  padding:23px;position:relative;overflow:hidden
-}
-.art-top{display:flex;justify-content:space-between;color:var(--muted);font-size:10px}
-.art-symbol{
-  font-family:"Space Grotesk";font-size:80px;line-height:1;
-  color:var(--accent);margin:23px 0 17px;
-  animation:appear 1s ease both
-}
-.art-title{font-family:"Space Grotesk";font-size:19px;font-weight:600}
-.art-copy{color:var(--muted);font-size:12px;margin:7px 0 18px}
-.art-footer{border-top:1px solid var(--line);padding-top:13px;color:var(--accent);font-size:11px}
-@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.section{padding:26px 0 38px}
-.section-head{
-  display:flex;align-items:end;justify-content:space-between;gap:25px;
-  margin-bottom:17px
-}
-.section-head h2{font-size:25px;letter-spacing:-.8px;margin:7px 0 0}
-.section-head p{max-width:400px;color:var(--muted);font-size:12px;margin:0}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
-.feature{
-  padding:19px;border:1px solid var(--line);border-radius:10px;
-  background:var(--surface);transition:border-color .2s,transform .2s
-}
-.feature:hover{border-color:#829b70;transform:translateY(-3px)}
-.feature-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.icon{
-  width:32px;height:32px;display:grid;place-items:center;
-  border:1px solid #3c4b3d;border-radius:8px;color:var(--accent);font-size:15px
-}
-.feature h3{font-size:14px;margin:0}
-.feature p{font-size:11px;color:var(--muted);line-height:1.8;margin:0}
-.thinking{
-  margin:3px 0 35px;border:1px solid #4b6040;border-radius:13px;
-  display:grid;grid-template-columns:1.05fr .95fr;overflow:hidden;
-  background:linear-gradient(115deg,#1a241b,#171c19)
-}
-.thinking-main{padding:27px}
-.thinking h2{font-size:26px;letter-spacing:-1px;margin:8px 0 12px}
-.thinking-main p{font-size:12px;color:var(--muted);line-height:1.9;max-width:480px}
-.thinking-main strong{color:var(--text)}
-.thinking-side{
-  border-left:1px solid var(--line);padding:23px;
-  display:grid;grid-template-columns:1fr 1fr;gap:9px;align-content:center
-}
-.skill{padding:12px;background:#ffffff05;border:1px solid var(--line);border-radius:8px}
-.skill b{display:block;font-size:12px;color:var(--accent);margin-bottom:3px}
-.skill span{font-size:10px;color:var(--muted)}
-.thinking-note{font-size:10px!important;margin:12px 0 0!important}
-.bottom{
-  display:flex;align-items:center;justify-content:space-between;gap:25px;
-  border-top:1px solid var(--line);padding:23px 0 30px
-}
-.bottom strong{font-family:"Space Grotesk";font-size:15px}
-.bottom p{color:var(--muted);font-size:11px;margin:3px 0 0}
-footer{border-top:1px solid var(--line);padding:15px 0;color:var(--muted);font-size:10px}
+a{color:inherit}
+.site-header{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:24px 26px 18px;gap:15px}
+.studyos-brand{display:inline-flex;align-items:center;gap:11px;color:#f8f7ff;text-decoration:none;flex-shrink:0}
+.studyos-mark{width:53px;height:53px;display:grid;place-items:center;flex-shrink:0;border-radius:17px;background:radial-gradient(circle at 35% 25%,rgba(162,118,255,.2),transparent 65%),rgba(11,13,34,.92);border:1px solid rgba(164,137,255,.32);box-shadow:0 0 24px rgba(119,90,255,.16),inset 0 0 18px rgba(94,112,255,.08);transition:transform .35s ease,box-shadow .35s ease}
+.studyos-mark svg{width:47px;height:47px;overflow:visible;animation:studyLogoFloat 4s ease-in-out infinite}
+.studyos-brand:hover .studyos-mark{transform:translateY(-2px) scale(1.05);box-shadow:0 0 35px rgba(137,99,255,.32)}
+.studyos-wordmark{font-size:23px;font-weight:800;letter-spacing:-1px}
+.wordmark-os{background:linear-gradient(100deg,#c59bff,#7b8dff,#69ddff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.header-note{font-size:10px;letter-spacing:2px;color:#9da6c5;text-align:right}
+@keyframes studyLogoFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:750}
+h1{font-size:clamp(30px,6vw,48px);margin:9px 0 6px;letter-spacing:-1.5px}
+h1 span{background:linear-gradient(100deg,#c59bff,#7b8dff,#69ddff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subtitle,.muted,.desc{color:var(--muted);line-height:1.6}
+.subtitle{margin:0}
+nav{display:flex;gap:8px;overflow:auto;padding:12px 18px 18px;max-width:1100px;margin:auto}
+nav a{white-space:nowrap;text-decoration:none;color:var(--muted);background:#121226;border:1px solid var(--border);padding:10px 13px;border-radius:12px;font-size:13px}
+nav a:hover{color:var(--cyan);border-color:#7770d9}
+main{max-width:1100px;margin:auto;padding:0 18px 50px}
+section{scroll-margin-top:20px;margin:0 0 23px}
+.section-title{font-size:21px;margin:0 0 13px}
+.desc{font-size:13px;margin:-5px 0 15px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.card{background:linear-gradient(145deg,rgba(24,24,52,.96),rgba(14,14,32,.96));border:1px solid var(--border);border-radius:19px;padding:18px;min-width:0;transition:transform .2s,border-color .2s}
+.card:hover{border-color:rgba(168,139,250,.4)}
+.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}
+.card h3{margin:0 0 8px;font-size:16px}
+.muted{font-size:13px}
+.big{font-size:30px;font-weight:800;margin:8px 0}
+.accent{color:var(--cyan)}.purple{color:var(--purple)}.pink{color:var(--pink)}.green{color:var(--green)}
+.progress{height:7px;background:#292744;border-radius:20px;overflow:hidden;margin:12px 0}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:20px;transition:width .25s}
+.btn{background:linear-gradient(110deg,#6b5bdb,#347fbb);color:white;border:0;border-radius:11px;padding:10px 13px;font-weight:650;transition:transform .2s,filter .2s}
+.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.btn.secondary{background:#242440;border:1px solid var(--border)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+input,select,textarea{width:100%;background:#0b0b1b;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:11px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
+label{display:block;font-size:12px;color:var(--muted);margin:12px 0 6px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.list{display:grid;gap:9px}
+.item{display:flex;gap:10px;align-items:flex-start;padding:11px;border:1px solid var(--border);border-radius:12px;background:#0c0c1e}
+.item input[type=checkbox],.topic input{width:18px;accent-color:var(--cyan);margin-top:2px;flex-shrink:0}
+.item-text{flex:1;font-size:13px;line-height:1.5}
+.done .item-text{text-decoration:line-through;color:#77758f}
+.topic-list{margin-top:12px;display:grid;gap:8px}
+.topic{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#d9d6ee;line-height:1.5}
+.topic.done span{text-decoration:line-through;color:#77758f}
+.tag{display:inline-block;padding:5px 8px;border:1px solid var(--border);border-radius:9px;font-size:11px;color:var(--cyan);margin:0 5px 6px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:#0c0c1e;padding:12px;border-radius:12px;border:1px solid var(--border)}
+.stat strong{display:block;font-size:22px;margin-bottom:4px}
+.stat span{font-size:11px;color:var(--muted)}
+.status{padding:11px 13px;border-radius:10px;background:#111126;border:1px solid var(--border);font-size:13px;line-height:1.5;white-space:pre-wrap}
 .hidden{display:none!important}
-.auth-wrap{max-width:420px;margin:45px auto 65px}
-.back{border:0;background:none;color:var(--muted);padding:0;margin-bottom:15px;font-size:12px}
-.auth-card{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:27px}
-.auth-card h2{font-size:28px;letter-spacing:-1px;margin:22px 0 5px}
-.auth-card p{font-size:12px;color:var(--muted)}
-.auth-card label{display:block;font-size:11px;margin:16px 0 6px}
-.auth-card input{
-  width:100%;padding:12px;border:1px solid var(--line);border-radius:7px;
-  background:#101512;color:var(--text)
-}
-.auth-card input:focus{border-color:var(--accent);outline:none}
-.auth-card .submit{width:100%;margin-top:19px}
-.auth-link{border:0;background:none;color:var(--accent);font-size:11px;padding:4px}
-.auth-bottom{text-align:center;margin-top:13px;font-size:11px;color:var(--muted)}
-.status{font-size:11px;color:var(--accent);margin-top:13px;overflow-wrap:anywhere}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}
+hr{border:0;border-top:1px solid var(--border);margin:17px 0}
+.landing-shell{max-width:1180px;padding:18px 26px 54px;margin:auto}
+.landing-view{display:grid;grid-template-columns:1fr 1fr;align-items:center;column-gap:20px;min-height:520px}
+.hero-copy{padding:38px 0 28px;position:relative;z-index:2}
+.hero-copy h1{font-size:clamp(42px,7vw,76px);line-height:1.02;letter-spacing:-3.5px;margin:23px 0 20px;font-weight:760}
+.hero-subtitle{max-width:440px;color:#a4adc6;font-size:16px;line-height:1.8;margin:0}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-primary{padding:15px 20px;border-radius:13px;box-shadow:0 10px 35px rgba(94,91,214,.22)}
+.hero-primary span,.auth-submit span{margin-left:16px}
+.hero-secondary{padding:14px 22px;border-radius:13px}
+.hero-proof{font-size:11px;letter-spacing:.5px;color:#818ba8;margin-top:27px}
+.hero-proof span{color:var(--cyan);margin-right:8px}
+.study-art{height:420px;position:relative;display:grid;place-items:center;isolation:isolate}
+.orbit{position:absolute;border:1px solid rgba(141,231,224,.15);border-radius:50%;width:320px;height:320px;animation:orbitspin 28s linear infinite}
+.orbit-one{transform:rotateX(66deg) rotate(-20deg)}
+.orbit-two{width:270px;height:370px;transform:rotate(42deg) rotateX(66deg);animation-direction:reverse}
+.planet{position:absolute;width:175px;height:175px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#7c83d4 0,#414c87 27%,#1b294b 62%,#11182e 78%);box-shadow:0 0 80px rgba(112,115,222,.18),inset -18px -18px 35px rgba(0,0,0,.4);z-index:-1;animation:floaty 6s ease-in-out infinite}
+.study-card{width:220px;min-height:280px;padding:19px;border:1px solid rgba(190,198,255,.24);border-radius:22px;background:linear-gradient(145deg,rgba(30,39,67,.94),rgba(14,20,38,.96));box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 50px rgba(113,119,221,.13);transform:rotate(-5deg);animation:cardfloat 7s ease-in-out infinite;backdrop-filter:blur(12px)}
+.study-card-top,.study-card-foot{display:flex;align-items:center;justify-content:space-between;font-size:8px;letter-spacing:1.5px;color:#9aa7c6}
+.tiny-star{font-size:17px;color:var(--cyan)}
+.focus-ring{width:125px;height:125px;border-radius:50%;margin:25px auto 20px;display:grid;place-items:center;background:radial-gradient(circle,#19213a 58%,transparent 60%),conic-gradient(var(--cyan) 0 72%,rgba(141,231,224,.12) 72% 100%);box-shadow:0 0 30px rgba(141,231,224,.1)}
+.focus-ring strong{font-size:36px;display:block;text-align:center;letter-spacing:-2px}
+.focus-ring small{display:block;text-align:center;color:var(--cyan);font-size:9px;letter-spacing:2px}
+.study-lines{display:grid;gap:7px;margin-bottom:22px}
+.study-lines i{height:5px;border-radius:5px;background:rgba(165,177,218,.15);display:block}
+.study-lines i:first-child{width:85%;background:linear-gradient(90deg,var(--purple),var(--cyan))}
+.study-lines i:nth-child(2){width:66%}.study-lines i:nth-child(3){width:48%}
+.study-card-foot b{color:var(--cyan);font-size:17px}
+.floating-book{position:absolute;width:65px;height:85px;border-radius:5px 10px 10px 5px;background:linear-gradient(140deg,#e6b7d7,#8d78c9);box-shadow:0 15px 35px #0005;padding:15px 9px;display:grid;align-content:center;gap:7px;animation:floaty 5s ease-in-out infinite}
+.floating-book span{height:3px;background:#fff8;border-radius:4px}
+.book-one{top:56px;right:9%;transform:rotate(13deg)}
+.book-two{bottom:50px;left:6%;background:linear-gradient(140deg,#9ce3d9,#4c8ca5);transform:rotate(-16deg);animation-delay:-2s}
+.spark{position:absolute;color:var(--cyan);text-shadow:0 0 15px currentColor;animation:twinkle 3s ease-in-out infinite}
+.spark-a{top:75px;left:19%;font-size:22px}
+.spark-b{bottom:75px;right:13%;font-size:28px;animation-delay:-1s}
+.spark-c{top:47%;right:6%;font-size:42px;color:var(--pink)}
+.floating-note{position:absolute;bottom:25px;right:1%;font-size:10px;color:#a4adc6;line-height:1.7;letter-spacing:.6px;transform:rotate(5deg)}
+.floating-note b{font-size:13px;color:#f4f2ff}
+.feature-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);padding-top:25px;gap:18px}
+.feature-strip>div{display:grid;grid-template-columns:30px 1fr;column-gap:10px;align-items:center}
+.feature-strip span{grid-row:span 2;color:var(--cyan);font-size:11px}
+.feature-strip b{font-size:12px;font-weight:650}
+.feature-strip small{color:#828ba8;font-size:10px;margin-top:5px}
+.auth-view{max-width:470px;margin:12px auto 40px}
+.back-link{background:none;border:0;color:#aab2cb;font-size:13px;padding:8px 0;margin-bottom:14px}
+.auth-panel{padding:32px;border:1px solid var(--border);border-radius:24px;background:linear-gradient(145deg,rgba(23,31,54,.97),rgba(12,17,32,.98));box-shadow:0 25px 70px #0003}
+.auth-symbol{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;background:rgba(141,231,224,.1);color:var(--cyan);margin-bottom:24px}
+.auth-symbol svg{width:44px;height:44px}
+.auth-panel h2{font-size:30px;letter-spacing:-1px;margin:10px 0}
+.auth-intro{color:var(--muted);font-size:13px;line-height:1.7;margin:0 0 22px}
+.auth-panel label{font-size:11px;margin-top:15px}
+.auth-panel input{padding:13px 14px;background:#0a1020;border-radius:12px}
+.optional{opacity:.65}
+.auth-submit{width:100%;padding:14px;margin-top:23px;border-radius:12px}
+.auth-switch{text-align:center;color:var(--muted);font-size:12px;margin:22px 0 0}
+.text-button{border:0;background:none;color:var(--cyan);padding:4px;font-weight:650}
+.forgot-row{text-align:right;margin-top:9px}
+.auth-status{max-width:470px;margin:12px auto 0;font-size:12px}
+.quote{color:#d7d6f0;line-height:1.7}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -13px}}
+@keyframes cardfloat{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-10px)}}
+@keyframes orbitspin{to{rotate:360deg}}
+@keyframes twinkle{0%,100%{opacity:.45;scale:.8}50%{opacity:1;scale:1.15}}
 @media(max-width:760px){
-  .hero{grid-template-columns:1fr;gap:23px;padding:42px 0 28px}
-  .hero-art{max-width:500px}
-  .features{grid-template-columns:1fr 1fr}
-  .thinking{grid-template-columns:1fr}
-  .thinking-side{border-left:0;border-top:1px solid var(--line)}
-  .section-head{align-items:start;flex-direction:column;gap:8px}
-}
-@media(max-width:500px){
-  .wrap{width:calc(100% - 30px)}
-  header{height:65px}
-  .nav{gap:12px}
-  .nav .nav-link{display:none}
-  h1{font-size:43px;letter-spacing:-2px}
-  .features{grid-template-columns:1fr}
-  .feature{padding:16px}
-  .thinking-main{padding:21px}
-  .thinking-side{padding:15px}
-  .bottom{align-items:flex-start;flex-direction:column}
+ .site-header{padding:18px 20px}
+ .header-note{font-size:8px;letter-spacing:1px;max-width:110px;line-height:1.6}
+ .studyos-mark{width:45px;height:45px;border-radius:14px}
+ .studyos-mark svg{width:41px;height:41px}
+ .studyos-wordmark{font-size:20px}
+ .landing-shell{padding:12px 20px 36px}
+ .landing-view{grid-template-columns:1fr;min-height:0}
+ .hero-copy{padding:32px 0 0}
+ .hero-copy h1{font-size:clamp(43px,12vw,62px);letter-spacing:-2.5px;margin:20px 0 16px}
+ .hero-subtitle{font-size:14px;max-width:380px}
+ .study-art{height:330px;grid-row:2}
+ .orbit{width:260px;height:260px}
+ .orbit-two{width:220px;height:310px}
+ .planet{width:145px;height:145px}
+ .study-card{transform:scale(.88) rotate(-5deg)}
+ .book-one{right:5%;top:35px}
+ .book-two{left:3%;bottom:20px}
+ .floating-note{bottom:5px}
+ .feature-strip{gap:9px;padding-top:20px}
+ .feature-strip>div{grid-template-columns:20px 1fr}
+ .feature-strip b{font-size:10px}
+ .feature-strip small{font-size:9px}
+ .auth-panel{padding:25px 21px}
+ .auth-view{margin-top:8px}
+ .s3,.s4,.s5,.s6,.s7,.s8{grid-column:span 12}
+ .card{padding:15px}
+ .stat strong{font-size:19px}
 }
 @media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+ .studyos-mark svg{animation:none}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <a href="#" class="brand" id="brandHome">
-    <span class="logo">S.</span>
-    <span>STUDY OS<small>YOUR PERSONAL STUDY SPACE</small></span>
-  </a>
-  <nav class="nav">
-    <a class="nav-link" href="#features">Features</a>
-    <a class="nav-link" href="#thinking">Thinking Lab</a>
-    <button class="btn outline" id="navLogin">Sign in</button>
-    <button class="btn" id="navSignup">Get started</button>
-  </nav>
+<header class="site-header">
+ <a class="studyos-brand" href="#" aria-label="Study OS home">
+  <span class="studyos-mark" aria-hidden="true">
+   <svg viewBox="0 0 100 100">
+    <defs>
+     <linearGradient id="sGradient" x1="15%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#f4dcff"/>
+      <stop offset="35%" stop-color="#b18aff"/>
+      <stop offset="68%" stop-color="#658cff"/>
+      <stop offset="100%" stop-color="#54e3ff"/>
+     </linearGradient>
+     <linearGradient id="orbitGradient">
+      <stop offset="0%" stop-color="#9c5cff"/>
+      <stop offset="55%" stop-color="#f3d9ff"/>
+      <stop offset="100%" stop-color="#478dff"/>
+     </linearGradient>
+     <filter id="logoGlow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+     </filter>
+    </defs>
+    <ellipse cx="50" cy="54" rx="39" ry="15" transform="rotate(-25 50 54)" fill="none" stroke="url(#orbitGradient)" stroke-width="1.8"/>
+    <path d="M69 23H40C23 23 19 42 35 49L61 61C79 69 74 83 57 83H30" fill="none" stroke="url(#sGradient)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" filter="url(#logoGlow)"/>
+    <path d="M83 9L86 17L94 20L86 23L83 31L80 23L72 20L80 17Z" fill="#e8d7ff"/>
+   </svg>
+  </span>
+  <span class="studyos-wordmark"><span>Study</span><span class="wordmark-os"> OS</span></span>
+ </a>
+ <span class="header-note">STUDY SMARTER. BECOME BETTER.</span>
 </header>
 
-<main id="home">
-  <section class="hero">
-    <div>
-      <div class="eyebrow">A better way to study</div>
-      <h1>Your goals.<br>Your discipline.<br><em>Your progress.</em></h1>
-      <p class="intro">
-        Study OS is a student-built workspace to organise your syllabus,
-        plan daily tasks, record study sessions and understand your progress —
-        all in one place.
-      </p>
-      <div class="actions">
-        <button class="btn" id="heroSignup">Create your account ↗</button>
-        <button class="btn outline" id="heroLogin">Sign in</button>
-      </div>
-      <div class="creator">An independent student project, created by <span class="creator-name">SAMEER</span></div>
-    </div>
-    <aside class="hero-art">
-      <div class="art-top"><span>STUDY OS / OVERVIEW</span><span>01 — 05</span></div>
-      <div class="art-symbol">✳</div>
-      <div class="art-title">Make your effort count.</div>
-      <p class="art-copy">Plan with intention. Study with focus. Review your progress.</p>
-      <div class="art-footer">LESS CHAOS. MORE CLARITY. ↗</div>
-    </aside>
-  </section>
-
-  <section class="section" id="features">
-    <div class="section-head">
-      <div><div class="eyebrow">Made for real study routines</div><h2>Everything in its place.</h2></div>
-      <p>Simple tools to help you stay organised and consistent, without unnecessary clutter.</p>
-    </div>
-    <div class="features">
-      <article class="feature">
-        <div class="feature-head"><span class="icon">◷</span><h3>Study Sessions</h3></div>
-        <p>Use focused study periods and record the time you put into each subject.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-head"><span class="icon">✓</span><h3>Daily To-Do</h3></div>
-        <p>Set priorities, organise your day and check off tasks as you complete them.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-head"><span class="icon">▤</span><h3>Syllabus Tracker</h3></div>
-        <p>Track chapters across Physics, Chemistry, Botany, Zoology and Mathematics.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-head"><span class="icon">↗</span><h3>Study Statistics</h3></div>
-        <p>Review study time, completed tasks and syllabus progress using your records.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-head"><span class="icon">◎</span><h3>Progress Tracking</h3></div>
-        <p>Measure completed work from 0 to 100% and see how far you have come.</p>
-      </article>
-      <article class="feature">
-        <div class="feature-head"><span class="icon">⌘</span><h3>Personal Workspace</h3></div>
-        <p>Sign in to keep your study information associated with your own account.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="thinking" id="thinking">
-    <div class="thinking-main">
-      <div class="eyebrow">Beyond the textbooks</div>
-      <h2>The Patrick Jane approach.<br><span style="color:var(--accent)">Observe. Question. Deduce.</span></h2>
-      <p>
-        Patrick Jane, from <em>The Mentalist</em>, is fascinating because he pays
-        attention to details others overlook, notices inconsistencies and tests
-        his assumptions before reaching a conclusion.
-      </p>
-      <p>
-        The <strong>Mentalist Lab</strong> brings that spirit into everyday practice:
-        sharpen observation, train memory, recognise patterns and reason from evidence.
-        The goal is not to read minds — it is to think more carefully.
-      </p>
-      <button class="btn" id="labSignup">Train your thinking ↗</button>
-      <p class="thinking-note">Inspired by a fictional character. Real skills develop through practice, feedback and critical thinking.</p>
-    </div>
-    <div class="thinking-side">
-      <div class="skill"><b>01 / Observe</b><span>Notice details and changes.</span></div>
-      <div class="skill"><b>02 / Remember</b><span>Practise recall and attention.</span></div>
-      <div class="skill"><b>03 / Find patterns</b><span>Connect clues and sequences.</span></div>
-      <div class="skill"><b>04 / Deduce</b><span>Separate evidence from guesses.</span></div>
-      <div class="skill"><b>05 / Question</b><span>Test assumptions fairly.</span></div>
-      <div class="skill"><b>06 / Reason</b><span>Compare possible explanations.</span></div>
-    </div>
-  </section>
-
-  <div class="bottom">
-    <div><strong>Start with one focused day.</strong><p>Small, consistent steps add up.</p></div>
-    <button class="btn" id="bottomSignup">Get started ↗</button>
+<main>
+<section id="authSection" class="landing-shell">
+ <div id="landingView" class="landing-view">
+  <div class="hero-copy">
+   <div class="eyebrow">✦ YOUR SPACE TO FOCUS</div>
+   <h1>Study smarter.<br><span>Become better.</span></h1>
+   <p class="hero-subtitle">Your personal space to focus, plan and grow.</p>
+   <div class="hero-actions">
+    <button class="btn hero-primary" id="showSignup">Start studying <span>↗</span></button>
+    <button class="btn secondary hero-secondary" id="showLogin">Sign in</button>
+   </div>
+   <div class="hero-proof">BUILT BY SAMEER</div>
   </div>
-</main>
 
-<section id="auth" class="hidden">
-  <div class="auth-wrap">
-    <button class="back" id="backHome">← Back to homepage</button>
-    <div class="auth-card">
-      <a href="#" class="brand" id="authBrand"><span class="logo">S.</span><span>STUDY OS<small>YOUR PERSONAL STUDY SPACE</small></span></a>
-
-      <div id="signupForm">
-        <h2>Create your account.</h2><p>Build a study routine that works for you.</p>
-        <label for="displayName">Your name</label>
-        <input id="displayName" autocomplete="name" placeholder="Your name">
-        <label for="username">Username</label>
-        <input id="username" autocomplete="username" placeholder="3–20 characters">
-        <label for="signupEmail">Email address</label>
-        <input id="signupEmail" type="email" autocomplete="email" placeholder="you@example.com">
-        <label for="signupPassword">Password</label>
-        <input id="signupPassword" type="password" autocomplete="new-password" placeholder="At least 8 characters">
-        <button class="btn submit" id="createAccount">Create account ↗</button>
-        <div class="auth-bottom">Already have an account? <button class="auth-link" id="switchLogin">Sign in</button></div>
-      </div>
-
-      <div id="loginForm" class="hidden">
-        <h2>Welcome back.</h2><p>Sign in to continue your study routine.</p>
-        <label for="loginEmail">Email address</label>
-        <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com">
-        <label for="loginPassword">Password</label>
-        <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password">
-        <button class="btn submit" id="signIn">Sign in ↗</button>
-        <div class="auth-bottom"><button class="auth-link" id="switchReset">Forgot your password?</button></div>
-        <div class="auth-bottom">New to Study OS? <button class="auth-link" id="switchSignup">Create account</button></div>
-      </div>
-
-      <div id="resetForm" class="hidden">
-        <h2>Reset password.</h2><p>Request a password-reset link by email.</p>
-        <label for="resetEmail">Email address</label>
-        <input id="resetEmail" type="email" autocomplete="email" placeholder="you@example.com">
-        <button class="btn submit" id="sendReset">Send reset link ↗</button>
-        <div class="auth-bottom"><button class="auth-link" id="resetBackLogin">Back to sign in</button></div>
-      </div>
-      <div id="authStatus" class="status" role="status"></div>
-      <div class="creator">An independent project by <span class="creator-name">SAMEER</span></div>
-    </div>
+  <div class="study-art" aria-label="Animated study illustration">
+   <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="planet"></div>
+   <div class="floating-book book-one"><span></span><span></span><span></span></div>
+   <div class="floating-book book-two"><span></span><span></span><span></span></div>
+   <div class="study-card">
+    <div class="study-card-top"><span class="tiny-star">✦</span><span>FOCUS MODE</span><span>●</span></div>
+    <div class="focus-ring"><div><strong>25</strong><small>MIN</small></div></div>
+    <div class="study-lines"><i></i><i></i><i></i></div>
+    <div class="study-card-foot"><span>ONE STEP AT A TIME</span><b>↗</b></div>
+   </div>
+   <div class="spark spark-a">✦</div><div class="spark spark-b">✧</div><div class="spark spark-c">·</div>
+   <div class="floating-note">small steps<br><b>big futures.</b></div>
   </div>
+
+  <div class="feature-strip">
+   <div><span>01</span><b>Focus</b><small>Study without distractions</small></div>
+   <div><span>02</span><b>Syllabus</b><small>Track your chapters</small></div>
+   <div><span>03</span><b>Daily tasks</b><small>Plan your day</small></div>
+  </div>
+ </div>
+
+ <div id="signupView" class="auth-view hidden">
+  <button class="back-link" data-back>← Back to home</button>
+  <div class="auth-panel">
+   <div class="auth-symbol">✦</div><div class="eyebrow">START YOUR JOURNEY</div>
+   <h2>Create your account</h2><p class="auth-intro">Make a little space for your future self.</p>
+   <label for="signupUsername">Username</label><input id="signupUsername" autocomplete="username" placeholder="study_star">
+   <label for="signupName">Display name <span class="optional">(optional)</span></label><input id="signupName" autocomplete="nickname" placeholder="What should we call you?">
+   <label for="signupEmail">Email address</label><input id="signupEmail" type="email" autocomplete="email" placeholder="you@example.com">
+   <label for="signupPassword">Password</label><input id="signupPassword" type="password" autocomplete="new-password" placeholder="At least 8 characters">
+   <button class="btn auth-submit" id="signupBtn">Create account <span>→</span></button>
+   <p class="auth-switch">Already have an account? <button class="text-button" id="signupToLogin">Sign in</button></p>
+  </div>
+ </div>
+
+ <div id="loginView" class="auth-view hidden">
+  <button class="back-link" data-back>← Back to home</button>
+  <div class="auth-panel">
+   <div class="auth-symbol">✦</div><div class="eyebrow">WELCOME BACK</div>
+   <h2>Good to see you.</h2><p class="auth-intro">Pick up where your progress left off.</p>
+   <label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com">
+   <label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password">
+   <div class="forgot-row"><button class="text-button" id="showReset">Forgot password?</button></div>
+   <button class="btn auth-submit" id="loginBtn">Sign in <span>→</span></button>
+   <p class="auth-switch">New to Study OS? <button class="text-button" id="loginToSignup">Create an account</button></p>
+  </div>
+ </div>
+
+ <div id="resetView" class="auth-view hidden">
+  <button class="back-link" data-back>← Back to home</button>
+  <div class="auth-panel">
+   <div class="auth-symbol">✦</div><div class="eyebrow">ACCOUNT RECOVERY</div>
+   <h2>Reset your password</h2><p class="auth-intro">Enter your email and we’ll send you a reset link if an account exists.</p>
+   <label for="resetEmail">Email address</label><input id="resetEmail" type="email" autocomplete="email" placeholder="you@example.com">
+   <button class="btn auth-submit" id="sendResetBtn">Send reset link <span>→</span></button>
+   <p class="auth-switch">Remembered it? <button class="text-button" id="resetToLogin">Back to sign in</button></p>
+  </div>
+ </div>
+ <p id="authMessage" class="status auth-status" role="status">Connecting securely…</p>
 </section>
 
-<footer>© Study OS · Built by Sameer · Designed for focused learning.</footer>
-</div>
+<section id="setupSection" class="hidden">
+ <div class="card">
+  <h3>Connection settings</h3>
+  <label for="projectUrl">Supabase Project URL</label><input id="projectUrl" type="url">
+  <label for="publishableKey">Publishable Key</label><input id="publishableKey" type="password">
+  <div class="actions"><button class="btn" id="connectBtn">Connect to Supabase</button><button class="btn secondary" id="forgetConfigBtn">Clear saved connection</button></div>
+ </div>
+</section>
 
-<script>
-const home=document.getElementById('home');
-const auth=document.getElementById('auth');
-const statusBox=document.getElementById('authStatus');
-const formIds=['signupForm','loginForm','resetForm'];
+<div id="appSection" class="hidden">
+ <nav>
+  <a href="#dashboard">Dashboard</a><a href="#study">Study tracker</a><a href="#routine">Daily plan</a><a href="#mentalist">Mindset Lab</a><a href="#settings">Settings</a>
+ </nav>
 
-function showAuth(id){
-  home.classList.add('hidden');
-  auth.classList.remove('hidden');
-  formIds.forEach(formId=>{
-    document.getElementById(formId).classList.toggle('hidden',formId!==id);
-  });
-  statusBox.textContent='';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function showHome(){
-  auth.classList.add('hidden');
-  home.classList.remove('hidden');
-  statusBox.textContent='';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-['heroSignup','navSignup','bottomSignup','labSignup'].forEach(id=>
-  document.getElementById(id).addEventListener('click',()=>showAuth('signupForm'))
-);
-['heroLogin','navLogin'].forEach(id=>
-  document.getElementById(id).addEventListener('click',()=>showAuth('loginForm'))
-);
-['backHome','authBrand'].forEach(id=>
-  document.getElementById(id).addEventListener('click',e=>{e.preventDefault();showHome()})
-);
-document.getElementById('brandHome').addEventListener('click',e=>{e.preventDefault();showHome()});
-document.getElementById('switchLogin').addEventListener('click',()=>showAuth('loginForm'));
-document.getElementById('switchSignup').addEventListener('click',()=>showAuth('signupForm'));
-document.getElementById('switchReset').addEventListener('click',()=>showAuth('resetForm'));
-document.getElementById('resetBackLogin').addEventListener('click',()=>showAuth('loginForm'));
-
-/* Supabase authentication configuration */
-const SUPABASE_URL='PASTE_YOUR_SUPABASE_PROJECT_URL_HERE';
-const SUPABASE_PUBLISHABLE_KEY='PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE';
-let supabaseClient=null;
-
-async function getClient(){
-  if(supabaseClient)return supabaseClient;
-  if(SUPABASE_URL.includes('PASTE_')||SUPABASE_PUBLISHABLE_KEY.includes('PASTE_')){
-    throw new Error('Add your Supabase project URL and publishable key in the code first.');
-  }
-  if(!window.supabase){
-    await new Promise((resolve,reject)=>{
-      const s=document.createElement('script');
-      s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
-      s.onload=resolve;
-      s.onerror=()=>reject(new Error('Could not load Supabase. Check your internet connection.'));
-      document.head.appendChild(s);
-    });
-  }
-  supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
-  return supabaseClient;
-}
-function say(message){statusBox.textContent=message}
-
-document.getElementById('createAccount').addEventListener('click',async()=>{
-  const name=document.getElementById('displayName').value.trim();
-  const username=document.getElementById('username').value.trim().toLowerCase();
-  const email=document.getElementById('signupEmail').value.trim();
-  const password=document.getElementById('signupPassword').value;
-  if(!name||!username||!email||!password)return say('Please complete all fields.');
-  if(!/^[a-z0-9_]{3,20}$/.test(username))return say('Username must be 3–20 characters using lowercase letters, numbers or underscores.');
-  if(password.length<8)return say('Your password must be at least 8 characters.');
-  try{
-    say('Creating your account…');
-    const client=await getClient();
-    const {data,error}=await client.auth.signUp({
-      email,password,options:{data:{username,display_name:name}}
-    });
-    if(error)throw error;
-    say(data.session?'Account created and signed in.':'Account request received. Check your email if confirmation is required.');
-  }catch(e){say(e.message||'Could not create your account.')}
-});
-
-document.getElementById('signIn').addEventListener('click',async()=>{
-  const email=document.getElementById('loginEmail').value.trim();
-  const password=document.getElementById('loginPassword').value;
-  if(!email||!password)return say('Enter your email and password.');
-  try{
-    say('Signing in…');
-    const client=await getClient();
-    const {error}=await client.auth.signInWithPassword({email,password});
-    if(error)throw error;
-    say('Signed in successfully. Connect your dashboard to load your saved study data.');
-  }catch(e){say(e.message||'Could not sign in.')}
-});
-
-document.getElementById('sendReset').addEventListener('click',async()=>{
-  const email=document.getElementById('resetEmail').value.trim();
-  if(!email)return say('Enter your email address.');
-  try{
-    say('Requesting reset link…');
-    const client=await getClient();
-    const {error}=await client.auth.resetPasswordForEmail(email,{
-      redirectTo:window.location.origin+window.location.pathname
-    });
-    if(error)throw error;
-    say('If an account exists for that email, a reset link has been sent.');
-  }catch(e){say(e.message||'Could not request a reset link.')}
-});
-</script>
-</body>
-</html>
+ <section id="dashboard">
+  <h2 class="section-title">Your universe</h2><p class="desc" id="today"></p>
+  <div class="grid">
+   <div class="card s3"><div class="muted">Syllabus completed</div><div class="big accent" id="syllabusStat">0%</div><div class="progress"><div id="syllabusBar"></div></div><div class="muted" id="topicCount">0 topics completed</div></div>
+   <div class="card s3"><div class="muted">Today's tasks</div><div class="big purple" id="taskStat">0%</div><div class="progress"><div id="taskBar"></div></div><div class="muted" id="taskCount">0 tasks completed</div></div>
+   <div class="card s3"><div class="muted">Study minutes today</div><div class="big green" id="minutesStat">0</div><div class="muted">Minutes logged today</div></div>
+   <div class="card s3"><div class="muted">Days until target</div><div class="big pink" id="countdownStat">—</div><div class="muted" id="countdownLabel">Set a target date in Settings.</div></div>
+   <div class="card s7">
+    <h3>✦ Today's mission</h3><p class="quote">Do one focused session, review one difficult concept, and record what you learned.</p>
+    <div class="actions"><button class="btn" onclick
